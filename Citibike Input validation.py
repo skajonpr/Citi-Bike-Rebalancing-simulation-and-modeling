@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 
-@author: Sukit @ Ajya
+@author: Sukit Kajonpradapkul
+
+Description: This program is to visual and test the goodness of fit of customer arrivals and bike returns-
+whether they follow exponential distribution by using Kolmogorov Smirnov testing 
+
+The csv file imported into this program is the dataset that is cleaned and selected 
+from the trip data provided by Citibike website. 
 
 """
 
@@ -42,7 +48,7 @@ plt.legend(loc='best')
 plt.savefig('K-s test for bike checked out.png')
 
 ks, p_ks = stats.kstest(values, lambda i: stats.expon.cdf(i, scale= scale_checkout))
-print 'k-s for bike checked out = {:.4f}, p-value = {:.4f}'.format(ks, p_ks)
+print ('k-s for bike checked out = {:.4f}, p-value = {:.4f}'.format(ks, p_ks))
 
 
 values = np.array(observed_returning)
@@ -59,4 +65,4 @@ plt.legend(loc='best')
 plt.savefig('K-s test for bike returned.png')
 
 ks, p_ks = stats.kstest(values, lambda i: stats.expon.cdf(i, scale= scale_returning))
-print 'k-s for bike returned = {:.4f}, p-value = {:.4f}'.format(ks, p_ks)
+print ('k-s for bike returned = {:.4f}, p-value = {:.4f}'.format(ks, p_ks))

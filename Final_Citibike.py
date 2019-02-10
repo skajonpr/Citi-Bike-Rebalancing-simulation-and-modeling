@@ -14,7 +14,7 @@ import scipy.stats as stats
 order_threshold = 2.0
 order_up_to = 5.0 
 delivery_delay = 20 # in minutes
-SIM_RUN = 200
+SIM_RUN = 1000  #number of simulation runs
 initial_bikes = 15
 operation_cost = 2 # USD per bike for operation
 oil_gas = 3 # USD per 1 refillment
@@ -114,7 +114,15 @@ if SIM_RUN > 1:
     plt.xlabel('Simulation runs')
     plt.ylabel('Bike Level')
     plt.title('Average Bike levels at each runs (Threshold= {:.0f}, order-up-to= {:.0f})'.format(order_threshold, order_up_to))
-    plt.savefig('Average bike level.png')    
+    plt.savefig('Average bike level.png')
+    
+    plt.figure()
+    plt.hist( avg_bikes, color='g')
+    plt.xlabel('X Bin')
+    plt.ylabel('Count')
+    plt.title(' Histogram (average number of bike)(Threshold= {:.0f}, order-up-to= {:.0f})'.format(order_threshold, order_up_to))
+    plt.legend(loc='best')
+    plt.savefig('Histogram Average bike level.png')
 
 
 
